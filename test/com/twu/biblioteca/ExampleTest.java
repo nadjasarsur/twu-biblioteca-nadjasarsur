@@ -61,4 +61,10 @@ public class ExampleTest {
 
     }
 
+    @Test
+    public void shouldShowMenuOptions(){
+        assertEquals("List Books",BibliotecaApp.getMenuOptions());
+
+    }
+
 }

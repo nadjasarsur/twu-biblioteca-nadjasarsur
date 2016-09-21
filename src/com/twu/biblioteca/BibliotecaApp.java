@@ -35,6 +35,10 @@ public class BibliotecaApp {
         return (book.getTitle()+", "+book.getAuthor()+", "+Integer.toString((book.getYear())));
     }
 
+    public static String getMenuOptions() {
+        return "List Books";
+    }
+
 /*
     private static StringBuilder getStringBuilder(List<String> allLibraryBooks) {
         StringBuilder builder = new StringBuilder();
