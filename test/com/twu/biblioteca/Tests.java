@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class ExampleTest {
+public class Tests {
 
     @Test
     public void shouldWelcomeCustomer(){
@@ -45,14 +45,14 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldShowBookDetail(){
+    public void shouldShowBookDetails(){
         Book book = new Book("Harry Potter","Rowling",2000);
         assertEquals("Harry Potter, Rowling, 2000", BibliotecaApp.getBooksDetails(book));
 
     }
 
     @Test
-    public void shouldShowDetailOfLibraryBooks(){
+    public void shouldShowDetailsOfLibraryBooks(){
         List<Book> books = new ArrayList<>();
         books.add(new Book("Harry Potter","Rowling",2000));
         books.add(new Book("O alquimista","Paulo Coelho",1988));
@@ -62,9 +62,24 @@ public class ExampleTest {
     }
 
     @Test
-    public void shouldShowMenuOptions(){
-        assertEquals("List Books",BibliotecaApp.getMenuOptions());
+    public void shouldShowMenuOptionListBooks(){
+        assertEquals("List Books", BibliotecaApp.getMenuOptions());
+    }
 
+    @Test
+    public void shouldShowAllBooksWhenMenuOptionListBooks() {
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        assertEquals("Harry Potter, Rowling, 2000\n" +
+                "O alquimista, Paulo Coelho, 1988", BibliotecaApp.getMenuOptions("List Books",books));
+    }
+
+
+    @Test
+    public void shouldShowMenuInvalidOption(){
+        String menuOption = "List Authors";
+        assertEquals("Select a valid option!", BibliotecaApp.getMenuOptions(menuOption));
     }
 
 }

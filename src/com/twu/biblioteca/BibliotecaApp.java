@@ -39,6 +39,23 @@ public class BibliotecaApp {
         return "List Books";
     }
 
+    public static String getMenuOptions(String menuOption) {
+        if(menuOption != "ListBooks"){
+            return "Select a valid option!";
+        }
+        return "The option is valid!";
+    }
+
+    public static String getMenuOptions(String menuOption, List<Book> books) {
+        if(menuOption == "List Books") {
+            return getAllLibraryBooks(books);
+        }
+        return "";
+    }
+
+
+
+
 /*
     private static StringBuilder getStringBuilder(List<String> allLibraryBooks) {
         StringBuilder builder = new StringBuilder();
