@@ -12,16 +12,30 @@ public class BibliotecaApp {
         return "Welcome";
     }
 
-    public static String getAllLibraryBooks(List<String> allLibraryBooks) {
-        if(allLibraryBooks == null || allLibraryBooks.isEmpty()) {
+
+
+    public static String getAllLibraryBooks(List<Book> books) {
+        StringBuilder builder = new StringBuilder();
+        if(books == null || books.isEmpty()) {
             return "There are no books!";
         }
         else {
-            StringBuilder builder = getStringBuilder(allLibraryBooks);
+            for (int i = 0; i < books.size(); i++) {
+                builder.append(getBooksDetails(books.get(i)));
+                if(i < books.size()-1 ) {
+                    builder.append("\n");
+                }
+            }
             return builder.toString();
         }
     }
 
+
+    public static String getBooksDetails(Book book) {
+        return (book.getTitle()+", "+book.getAuthor()+", "+Integer.toString((book.getYear())));
+    }
+
+/*
     private static StringBuilder getStringBuilder(List<String> allLibraryBooks) {
         StringBuilder builder = new StringBuilder();
         for(int i=0; i<allLibraryBooks.size(); i++) {
@@ -33,6 +47,7 @@ public class BibliotecaApp {
         }
         return builder;
     }
+*/
 
 
 }
