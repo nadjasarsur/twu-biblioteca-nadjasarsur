@@ -4,17 +4,32 @@ import java.util.List;
 
 public class BibliotecaApp {
 
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
+
+    private boolean flag_quit;
+    public Menu menu;
+
+    public BibliotecaApp() {
+        flag_quit = false;
+        System.out.println(getWelcomeMessage());
+        menu = new Menu();
     }
 
-    public static String getWelcomeMessage() {
+    public boolean getFlag_quit() {
+        return flag_quit;
+    }
+
+
+    public void setFlag_quit(boolean flag_quit) {
+        this.flag_quit = flag_quit;
+    }
+
+
+    public String getWelcomeMessage() {
         return "Welcome";
     }
 
 
-
-    public static String getAllLibraryBooks(List<Book> books) {
+    public String getAllLibraryBooks(List<Book> books) {
         StringBuilder builder = new StringBuilder();
         if(books == null || books.isEmpty()) {
             return "There are no books!";
@@ -30,45 +45,32 @@ public class BibliotecaApp {
         }
     }
 
-
-    public static String getBooksDetails(Book book) {
+    public String getBooksDetails(Book book) {
         return (book.getTitle()+", "+book.getAuthor()+", "+Integer.toString((book.getYear())));
     }
 
-    public static String getMenuOptions() {
+    public String getMenuOptions() {
         return "List Books";
     }
 
-    public static String getMenuOptions(String menuOption) {
-        if(menuOption != "ListBooks"){
+    public String getMenuOptions(String menuOption, List<Book> books) {
+        if(!menuOption.equals("List Books") && !menuOption.equals("Quit")){
+            System.out.println("Select a valid option!");
             return "Select a valid option!";
+        }
+        if(menuOption.equals("List Books")) {
+            System.out.println(getAllLibraryBooks(books));
+            return getAllLibraryBooks(books);
+        }
+        if(menuOption.equals("Quit")) {
+            flag_quit = true;
+            System.out.println("Bye User");
+            return "Exit!";
         }
         return "The option is valid!";
     }
 
-    public static String getMenuOptions(String menuOption, List<Book> books) {
-        if(menuOption == "List Books") {
-            return getAllLibraryBooks(books);
-        }
-        return "";
-    }
 
-
-
-
-/*
-    private static StringBuilder getStringBuilder(List<String> allLibraryBooks) {
-        StringBuilder builder = new StringBuilder();
-        for(int i=0; i<allLibraryBooks.size(); i++) {
-            if(i<allLibraryBooks.size()-1)
-                builder.append(allLibraryBooks.get(i)+", ");
-            else{
-                builder.append(allLibraryBooks.get(i));
-            }
-        }
-        return builder;
-    }
-*/
 
 
 }
