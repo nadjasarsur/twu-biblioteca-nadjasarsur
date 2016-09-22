@@ -87,6 +87,7 @@ public class BibliotecaApp {
         InputStreamReader r = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(r);
         String title = null;
+        System.out.print("Book title: ");
         try {
             title = br.readLine();
         } catch (IOException e) {
@@ -102,9 +103,14 @@ public class BibliotecaApp {
 
     public String setCheckoutBookByName(List<Book> books, String title) {
         int index = findBookOnLibraryByName(books, title);
-        books.get(index).setCheckout(true);
-        showSuccessfulCheckoutMessage(books.get(index));
+        try{
+            books.get(index).setCheckout(true);
+            showCheckoutMessage(books,index);
+        } catch (Exception e) {
+            showCheckoutMessage(books,index);
+        }
         return getAllLibraryBooks(books);
+
     }
 
     private int findBookOnLibraryByName(List<Book> books, String title) {
@@ -117,12 +123,12 @@ public class BibliotecaApp {
     }
 
 
-    public String showSuccessfulCheckoutMessage(Book book) {
-        if(book.isCheckout()){
+    public String showCheckoutMessage(List<Book> books, int index) {
+        if(index >= 0 && books.get(index).isCheckout()){
             System.out.println("Thank you! Enjoy the book\n");
             return "Thank you! Enjoy the book";
         }
-        System.out.println("Fail");
-        return "Fail";
+        System.out.println("That book is not available.\n");
+        return "That book is not available.";
     }
 }

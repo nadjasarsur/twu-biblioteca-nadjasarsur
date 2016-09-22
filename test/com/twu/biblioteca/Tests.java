@@ -107,7 +107,15 @@ public class Tests {
         books.add(new Book("Harry Potter","Rowling",2000));
         books.add(new Book("O alquimista","Paulo Coelho",1988));
         biblio.setCheckoutBookByName(books,"Harry Potter");
-        assertEquals("Thank you! Enjoy the book", biblio.showSuccessfulCheckoutMessage(books.get(0)));
+        assertEquals("Thank you! Enjoy the book", biblio.showCheckoutMessage(books,0));
     }
 
+    @Test
+    public void shouldVerifyUnsuccessfulCheckout(){
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        biblio.setCheckoutBookByName(books,"HHHarry PPPotter :)");
+        assertEquals("That book is not available.", biblio.showCheckoutMessage(books,0));
+    }
 }

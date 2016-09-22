@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30ef2ec8-a2d4-43a8-8b2b-b1e787223caa" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Menu.java" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Menu.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/Tests.java" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/Tests.java" />
     </list>
     <ignored path="TWU_Biblioteca-master.iws" />
@@ -29,8 +29,8 @@
       <file leaf-file-name="BibliotecaApp.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="124" column="32" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
+            <state relative-caret-position="213">
+              <caret line="127" column="48" selection-start-line="127" selection-start-column="48" selection-end-line="127" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,8 +41,8 @@
       <file leaf-file-name="main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state relative-caret-position="-122">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#284#290#0" expanded="true" />
@@ -67,8 +67,8 @@
       <file leaf-file-name="Tests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/Tests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#316#317#0" expanded="true" />
@@ -80,6 +80,7 @@
                 <element signature="e#2739#2745#0" expanded="true" />
                 <element signature="e#3163#3169#0" expanded="true" />
                 <element signature="e#3521#3527#0" expanded="true" />
+                <element signature="e#3913#3919#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,7 +89,7 @@
       <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="453">
               <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
@@ -204,32 +205,6 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="Tests.shouldCheckoutBookAndVerifyParameterCheckoutFromBook" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.twu.biblioteca.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="TWU_Biblioteca-master" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
-      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.Tests" />
-      <option name="METHOD_NAME" value="shouldCheckoutBookAndVerifyParameterCheckoutFromBook" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="Tests.shouldCheckoutBookByNameAndVerifyItIsNotListed" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -289,6 +264,32 @@
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.Tests" />
       <option name="METHOD_NAME" value="shouldVerifySuccessfulCheckout" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tests.shouldVerifyUnsuccessfulCheckout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.twu.biblioteca.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="TWU_Biblioteca-master" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
+      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.Tests" />
+      <option name="METHOD_NAME" value="shouldVerifyUnsuccessfulCheckout" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -548,18 +549,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.Tests" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.Tests.shouldCheckoutBookAndVerifyParameterCheckoutFromBook" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.Tests.shouldCheckoutBookByNameAndVerifyItIsNotListed" />
-      <item index="3" class="java.lang.String" itemvalue="Application.main" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.Tests.shouldVerifySuccessfulCheckout" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.Tests.shouldCheckoutBookByNameAndVerifyItIsNotListed" />
+      <item index="2" class="java.lang.String" itemvalue="Application.main" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Tests.shouldVerifySuccessfulCheckout" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.Tests.shouldVerifyUnsuccessfulCheckout" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.main" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.Tests" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.Tests.shouldVerifySuccessfulCheckout" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.Tests.shouldCheckoutBookByNameAndVerifyItIsNotListed" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.Tests.shouldCheckoutBookAndVerifyParameterCheckoutFromBook" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Tests.shouldVerifyUnsuccessfulCheckout" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.Tests.shouldCheckoutBookByNameAndVerifyItIsNotListed" />
       </list>
     </recent_temporary>
   </component>
@@ -578,35 +579,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Tests - 2016.09.22 at 14h 05m 21s.xml">
-      <configuration name="Tests" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Tests - 2016.09.22 at 14h 19m 16s.xml">
       <configuration name="Tests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 13h 53m 26s.xml">
+    <history-entry file="Tests - 2016.09.22 at 15h 04m 00s.xml">
+      <configuration name="Tests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests - 2016.09.22 at 15h 05m 06s.xml">
+      <configuration name="Tests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests - 2016.09.22 at 15h 05m 15s.xml">
+      <configuration name="Tests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 15h 04m 26s.xml">
       <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 05m 04s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
+    <history-entry file="Tests_shouldVerifyUnsuccessfulCheckout - 2016.09.22 at 14h 44m 29s.xml">
+      <configuration name="Tests.shouldVerifyUnsuccessfulCheckout" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 11m 41s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
+    <history-entry file="Tests_shouldVerifyUnsuccessfulCheckout - 2016.09.22 at 14h 46m 06s.xml">
+      <configuration name="Tests.shouldVerifyUnsuccessfulCheckout" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 15m 01s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
+    <history-entry file="Tests_shouldVerifyUnsuccessfulCheckout - 2016.09.22 at 14h 58m 22s.xml">
+      <configuration name="Tests.shouldVerifyUnsuccessfulCheckout" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 15m 13s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
+    <history-entry file="Tests_shouldVerifyUnsuccessfulCheckout - 2016.09.22 at 14h 58m 58s.xml">
+      <configuration name="Tests.shouldVerifyUnsuccessfulCheckout" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 15m 19s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 15m 31s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Tests_shouldVerifySuccessfulCheckout - 2016.09.22 at 14h 19m 10s.xml">
-      <configuration name="Tests.shouldVerifySuccessfulCheckout" configurationId="JUnit" />
+    <history-entry file="Tests_shouldVerifyUnsuccessfulCheckout - 2016.09.22 at 15h 03m 49s.xml">
+      <configuration name="Tests.shouldVerifyUnsuccessfulCheckout" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -614,7 +615,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -623,7 +624,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.76875" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3359375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -662,7 +663,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1859375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28125" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16171876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -689,12 +690,6 @@
           <line>16</line>
           <properties />
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/Tests.java</url>
-          <line>104</line>
-          <properties class="com.twu.biblioteca.Tests" method="shouldVerifySuccessfulCheckout" />
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="9" />
@@ -753,6 +748,7 @@
             <element signature="e#2739#2745#0" expanded="true" />
             <element signature="e#3163#3169#0" expanded="true" />
             <element signature="e#3521#3527#0" expanded="true" />
+            <element signature="e#3913#3919#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -812,6 +808,7 @@
             <element signature="e#2739#2745#0" expanded="true" />
             <element signature="e#3163#3169#0" expanded="true" />
             <element signature="e#3521#3527#0" expanded="true" />
+            <element signature="e#3913#3919#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -871,6 +868,7 @@
             <element signature="e#2739#2745#0" expanded="true" />
             <element signature="e#3163#3169#0" expanded="true" />
             <element signature="e#3521#3527#0" expanded="true" />
+            <element signature="e#3913#3919#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -927,7 +925,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
+        <state relative-caret-position="453">
           <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
@@ -935,8 +933,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/com/twu/biblioteca/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#316#317#0" expanded="true" />
@@ -948,14 +946,15 @@
             <element signature="e#2739#2745#0" expanded="true" />
             <element signature="e#3163#3169#0" expanded="true" />
             <element signature="e#3521#3527#0" expanded="true" />
+            <element signature="e#3913#3919#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        <state relative-caret-position="-122">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#284#290#0" expanded="true" />
@@ -965,8 +964,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="124" column="32" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
+        <state relative-caret-position="213">
+          <caret line="127" column="48" selection-start-line="127" selection-start-column="48" selection-end-line="127" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
