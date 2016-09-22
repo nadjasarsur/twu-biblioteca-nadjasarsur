@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -75,13 +76,6 @@ public class Tests {
         assertEquals("Exit!", biblio.getMenuOptions(menuOption, null));
     }
 
-    @Test
-    public void shouldCheckoutBookByIndex(){
-        List<Book> books = new ArrayList<Book>();
-        books.add(new Book("Harry Potter","Rowling",2000));
-        books.add(new Book("O alquimista","Paulo Coelho",1988));
-        assertEquals("O alquimista, Paulo Coelho, 1988", biblio.setCheckoutBookByIndex(books,books.get(0)));
-    }
 
     @Test
     public void shouldCheckoutBookByNameAndVerifyItIsNotListed(){
@@ -118,4 +112,27 @@ public class Tests {
         biblio.setCheckoutBookByName(books,"HHHarry PPPotter :)");
         assertEquals("That book is not available.", biblio.showCheckoutMessage(books,0));
     }
+
+    @Test
+    public void shouldReturnBookAndVerifyParameterCheckoutFromBook(){
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        biblio.returnBookByName(books,books.get(0).getTitle());
+        assertFalse(books.get(0).isCheckout());
+    }
+
+    @Test
+    public void shouldReturnBookAndAddBookToListBook() {
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        biblio.returnBookByName(books,books.get(0).getTitle());
+        assertEquals("Harry Potter, Rowling, 2000\n" +
+                "O alquimista, Paulo Coelho, 1988", biblio.getMenuOptions("List Books",books));
+    }
+
+
 }

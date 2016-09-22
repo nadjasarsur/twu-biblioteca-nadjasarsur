@@ -15,6 +15,7 @@ public class Menu {
 
         menuOptions.add("List Books");
         menuOptions.add("Checkout Book");
+        menuOptions.add("Return Book");
         menuOptions.add("Quit");
     }
 

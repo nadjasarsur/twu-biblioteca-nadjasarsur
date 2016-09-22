@@ -23,11 +23,6 @@ public class BibliotecaApp {
     }
 
 
-    public void setFlag_quit(boolean flag_quit) {
-        this.flag_quit = flag_quit;
-    }
-
-
     public String getWelcomeMessage() {
         return "WELCOME!!!";
     }
@@ -75,6 +70,10 @@ public class BibliotecaApp {
             checkoutBook(books);
             return getAllLibraryBooks(books);
         }
+        if(menuOption.toUpperCase().equals("RETURN BOOK")) {
+            returnBook(books);
+            return getAllLibraryBooks(books);
+        }
         if(menuOption.toUpperCase().equals("QUIT")) {
             flag_quit = true;
             System.out.println("Bye User");
@@ -96,9 +95,18 @@ public class BibliotecaApp {
         setCheckoutBookByName(books,title);
     }
 
-    public String setCheckoutBookByIndex(List<Book> books, Book book) {
-        books.remove(book);
-        return getAllLibraryBooks(books);
+
+    private void returnBook(List<Book> books) {
+        InputStreamReader r = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(r);
+        String title = null;
+        System.out.print("Book title: ");
+        try {
+            title = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        returnBookByName(books,title);
     }
 
     public String setCheckoutBookByName(List<Book> books, String title) {
@@ -131,4 +139,16 @@ public class BibliotecaApp {
         System.out.println("That book is not available.\n");
         return "That book is not available.";
     }
+
+    public String returnBookByName(List<Book> books, String title) {
+        int index = findBookOnLibraryByName(books, title);
+        try{
+            books.get(index).setCheckout(false);
+        } catch (Exception e) {
+        }
+        return getAllLibraryBooks(books);
+
+    }
+
+
 }
