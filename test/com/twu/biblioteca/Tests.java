@@ -1,29 +1,28 @@
 package com.twu.biblioteca;
 
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 
 public class Tests {
 
 
     BibliotecaApp biblio = new BibliotecaApp();
 
-
-
     @Test
     public void shouldWelcomeCustomer(){
-        assertEquals("Welcome", biblio.getWelcomeMessage());
+        assertEquals("WELCOME!!!", biblio.getWelcomeMessage());
     }
 
     @Test
     public void shouldAlertCustomerWhenTheBookListIsEmpty(){
-        List<Book> books = new ArrayList<>();
+        List<Book> books = new ArrayList<Book>();
         assertEquals("There are no books!", biblio.getAllLibraryBooks(books));
     }
 
@@ -42,7 +41,7 @@ public class Tests {
 
     @Test
     public void shouldShowDetailsOfLibraryBooks(){
-        List<Book> books = new ArrayList<>();
+        List<Book> books = new ArrayList<Book>();
         books.add(new Book("Harry Potter","Rowling",2000));
         books.add(new Book("O alquimista","Paulo Coelho",1988));
         assertEquals("Harry Potter, Rowling, 2000\n" +
@@ -57,7 +56,7 @@ public class Tests {
 
     @Test
     public void shouldShowAllBooksWhenMenuOptionListBooks() {
-        List<Book> books = new ArrayList<>();
+        List<Book> books = new ArrayList<Book>();
         books.add(new Book("Harry Potter","Rowling",2000));
         books.add(new Book("O alquimista","Paulo Coelho",1988));
         assertEquals("Harry Potter, Rowling, 2000\n" +
@@ -77,5 +76,32 @@ public class Tests {
         assertEquals("Exit!", biblio.getMenuOptions(menuOption, null));
     }
 
+    //* Checkout Book - As a librarian, I would like customers to be able to check-out a book.
+    // Checked out books should not appear in the list of all library books.
+    @Test
+    public void shouldCheckoutBookByIndex(){
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        assertEquals("O alquimista, Paulo Coelho, 1988", biblio.setCheckoutBookByIndex(books,books.get(0)));
+    }
 
+    @Test
+    public void shouldCheckoutBookByNameAndVerifyItIsNotListed(){
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        assertEquals("O alquimista, Paulo Coelho, 1988",biblio.getAllLibraryBooks(books));
+    }
+
+    @Test
+    public void shouldCheckoutBookAndVerifyParameterCheckoutFromBook(){
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        assertTrue(books.get(0).isCheckout());
+
+    }
 }

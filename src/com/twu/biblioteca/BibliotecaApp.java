@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+
 import java.util.List;
 
 public class BibliotecaApp {
@@ -25,7 +26,7 @@ public class BibliotecaApp {
 
 
     public String getWelcomeMessage() {
-        return "Welcome";
+        return "WELCOME!!!";
     }
 
 
@@ -36,9 +37,11 @@ public class BibliotecaApp {
         }
         else {
             for (int i = 0; i < books.size(); i++) {
-                builder.append(getBooksDetails(books.get(i)));
-                if(i < books.size()-1 ) {
-                    builder.append("\n");
+                if(!books.get(i).isCheckout()) {
+                    builder.append(getBooksDetails(books.get(i)));
+                    if (i < books.size() - 1) {
+                        builder.append("\n");
+                    }
                 }
             }
             return builder.toString();
@@ -54,15 +57,15 @@ public class BibliotecaApp {
     }
 
     public String getMenuOptions(String menuOption, List<Book> books) {
-        if(!menuOption.equals("List Books") && !menuOption.equals("Quit")){
+        if(!menuOption.toUpperCase().equals("LIST BOOKS") && !menuOption.toUpperCase().equals("QUIT")){
             System.out.println("Select a valid option!");
             return "Select a valid option!";
         }
-        if(menuOption.equals("List Books")) {
+        if(menuOption.toUpperCase().equals("LIST BOOKS")) {
             System.out.println(getAllLibraryBooks(books));
             return getAllLibraryBooks(books);
         }
-        if(menuOption.equals("Quit")) {
+        if(menuOption.toUpperCase().equals("QUIT")) {
             flag_quit = true;
             System.out.println("Bye User");
             return "Exit!";
@@ -71,6 +74,21 @@ public class BibliotecaApp {
     }
 
 
+    public String setCheckoutBookByIndex(List<Book> books, Book book) {
+        books.remove(book);
+        return getAllLibraryBooks(books);
+    }
+
+    public String setCheckoutBookByName(List<Book> books, String title) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().toUpperCase().equals(title.toUpperCase())) {
+                books.get(i).setCheckout(true);
+                //books.remove(i);
+                break;
+            }
+        }
+        return getAllLibraryBooks(books);
+    }
 
 
 }

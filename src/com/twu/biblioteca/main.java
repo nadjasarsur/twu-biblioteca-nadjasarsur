@@ -13,7 +13,7 @@ public class main {
 
     public static void main(String [] args) {
 
-        List<Book> bookList = new ArrayList<>();
+        List<Book> bookList = new ArrayList<Book>();
         bookList.add(new Book("Harry Potter","Rowling",2000));
         bookList.add(new Book("O alquimista","Paulo Coelho",1988));
         bookList.add(new Book("TDD by example","Marcel Pepescu",2011));

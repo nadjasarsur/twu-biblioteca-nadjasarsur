@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +8,11 @@ import java.util.List;
  * Created by nsarsur on 9/21/16.
  */
 public class Menu {
-    private List<String> menuOptions = new ArrayList<>();
+    private List<String> menuOptions = new ArrayList<String>();
+    ;
 
     public Menu() {
+
         menuOptions.add("List Books");
         menuOptions.add("Quit");
     }
