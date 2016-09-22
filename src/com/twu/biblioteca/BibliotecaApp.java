@@ -1,6 +1,9 @@
 package com.twu.biblioteca;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class BibliotecaApp {
@@ -57,12 +60,19 @@ public class BibliotecaApp {
     }
 
     public String getMenuOptions(String menuOption, List<Book> books) {
-        if(!menuOption.toUpperCase().equals("LIST BOOKS") && !menuOption.toUpperCase().equals("QUIT")){
+        if(!menuOption.toUpperCase().equals("LIST BOOKS")
+                && !menuOption.toUpperCase().equals("QUIT")
+                && !menuOption.toUpperCase().equals("CHECKOUT BOOK")){
             System.out.println("Select a valid option!");
             return "Select a valid option!";
         }
         if(menuOption.toUpperCase().equals("LIST BOOKS")) {
-            System.out.println(getAllLibraryBooks(books));
+            System.out.println("\nBooks on the library:");
+            System.out.println(getAllLibraryBooks(books) + "\n");
+            return getAllLibraryBooks(books);
+        }
+        if(menuOption.toUpperCase().equals("CHECKOUT BOOK")) {
+            checkoutBook(books);
             return getAllLibraryBooks(books);
         }
         if(menuOption.toUpperCase().equals("QUIT")) {
@@ -73,6 +83,17 @@ public class BibliotecaApp {
         return "The option is valid!";
     }
 
+    private void checkoutBook(List<Book> books) {
+        InputStreamReader r = new InputStreamReader(System.in);
+        BufferedReader br = new BufferedReader(r);
+        String title = null;
+        try {
+            title = br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        setCheckoutBookByName(books,title);
+    }
 
     public String setCheckoutBookByIndex(List<Book> books, Book book) {
         books.remove(book);
@@ -80,15 +101,28 @@ public class BibliotecaApp {
     }
 
     public String setCheckoutBookByName(List<Book> books, String title) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().toUpperCase().equals(title.toUpperCase())) {
-                books.get(i).setCheckout(true);
-                //books.remove(i);
-                break;
-            }
-        }
+        int index = findBookOnLibraryByName(books, title);
+        books.get(index).setCheckout(true);
+        showSuccessfulCheckoutMessage(books.get(index));
         return getAllLibraryBooks(books);
     }
 
+    private int findBookOnLibraryByName(List<Book> books, String title) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().toUpperCase().equals(title.toUpperCase())) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
+
+    public String showSuccessfulCheckoutMessage(Book book) {
+        if(book.isCheckout()){
+            System.out.println("Thank you! Enjoy the book\n");
+            return "Thank you! Enjoy the book";
+        }
+        System.out.println("Fail");
+        return "Fail";
+    }
 }

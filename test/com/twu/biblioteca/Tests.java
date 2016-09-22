@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,8 +75,6 @@ public class Tests {
         assertEquals("Exit!", biblio.getMenuOptions(menuOption, null));
     }
 
-    //* Checkout Book - As a librarian, I would like customers to be able to check-out a book.
-    // Checked out books should not appear in the list of all library books.
     @Test
     public void shouldCheckoutBookByIndex(){
         List<Book> books = new ArrayList<Book>();
@@ -102,6 +99,15 @@ public class Tests {
         books.add(new Book("O alquimista","Paulo Coelho",1988));
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         assertTrue(books.get(0).isCheckout());
-
     }
+
+    @Test
+    public void shouldVerifySuccessfulCheckout(){
+        List<Book> books = new ArrayList<Book>();
+        books.add(new Book("Harry Potter","Rowling",2000));
+        books.add(new Book("O alquimista","Paulo Coelho",1988));
+        biblio.setCheckoutBookByName(books,"Harry Potter");
+        assertEquals("Thank you! Enjoy the book", biblio.showSuccessfulCheckoutMessage(books.get(0)));
+    }
+
 }

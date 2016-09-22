@@ -14,6 +14,7 @@ public class Menu {
     public Menu() {
 
         menuOptions.add("List Books");
+        menuOptions.add("Checkout Book");
         menuOptions.add("Quit");
     }
 
