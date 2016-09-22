@@ -57,7 +57,8 @@ public class BibliotecaApp {
     public String getMenuOptions(String menuOption, List<Book> books) {
         if(!menuOption.toUpperCase().equals("LIST BOOKS")
                 && !menuOption.toUpperCase().equals("QUIT")
-                && !menuOption.toUpperCase().equals("CHECKOUT BOOK")){
+                && !menuOption.toUpperCase().equals("CHECKOUT BOOK")
+                && !menuOption.toUpperCase().equals("RETURN BOOK")){
             System.out.println("Select a valid option!");
             return "Select a valid option!";
         }
@@ -144,10 +145,22 @@ public class BibliotecaApp {
         int index = findBookOnLibraryByName(books, title);
         try{
             books.get(index).setCheckout(false);
+            showReturnMessage(books,index);
         } catch (Exception e) {
+            showReturnMessage(books,index);
+
         }
         return getAllLibraryBooks(books);
 
+    }
+
+    public String showReturnMessage(List<Book> books, int index) {
+        if(index >= 0 && !books.get(index).isCheckout()){
+            System.out.println("Thank you for returning the book.\n");
+            return "Thank you for returning the book.";
+        }
+        System.out.println("That is not a valid book to return.\n");
+        return "That is not a valid book to return.";
     }
 
 
