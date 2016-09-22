@@ -27,4 +27,11 @@ public class Menu {
         System.out.print("\nOPTION: ");
     }
 
+    public List<String> getMenuOptions() {
+        return menuOptions;
+    }
+
+    public void setMenuOptions(List<String> menuOptions) {
+        this.menuOptions = menuOptions;
+    }
 }

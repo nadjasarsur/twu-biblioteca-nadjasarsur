@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +15,7 @@ public class BibliotecaApp {
 
     public BibliotecaApp() {
         flag_quit = false;
-        System.out.println(getWelcomeMessage());
+        System.out.println(getWelcomeMessage() + "\n");
         menu = new Menu();
     }
 
@@ -28,7 +29,7 @@ public class BibliotecaApp {
     }
 
 
-    public String getAllLibraryBooks(List<Book> books) {
+    public String getAllLibraryBook(List<Book> books) {
         StringBuilder builder = new StringBuilder();
         if(books == null || books.isEmpty()) {
             return "There are no books!";
@@ -50,36 +51,36 @@ public class BibliotecaApp {
         return (book.getTitle()+", "+book.getAuthor()+", "+Integer.toString((book.getYear())));
     }
 
-    public String getMenuOptions() {
-        return "List Books";
+    public int validateMenuOptions(String menuOption) {
+        for (int i=0; i<menu.getMenuOptions().size(); i++){
+            if(menuOption.toUpperCase().equals(menu.getMenuOptions().get(i).toUpperCase())) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public String getMenuOptions(String menuOption, List<Book> books) {
-        if(!menuOption.toUpperCase().equals("LIST BOOKS")
-                && !menuOption.toUpperCase().equals("QUIT")
-                && !menuOption.toUpperCase().equals("CHECKOUT BOOK")
-                && !menuOption.toUpperCase().equals("RETURN BOOK")){
-            System.out.println("Select a valid option!");
-            return "Select a valid option!";
+        int option = validateMenuOptions(menuOption);
+        switch (option){
+            case -1:    //Invalid option
+                        System.out.println("Select a valid option!");
+                        return "Select a valid option!";
+            case 0:     //List Books
+                        System.out.println("\nBooks on the library: " + (getAllLibraryBook(books) + "\n"));
+                        return getAllLibraryBook(books);
+            case 1:     //Checkout Book
+                        checkoutBook(books);
+                        return getAllLibraryBook(books);
+            case 2:     //Return Book
+                        returnBook(books);
+                        return getAllLibraryBook(books);
+            case 3:     //Quit
+                        flag_quit = true;
+                        System.out.println("Bye User");
+                        return "Exit!";
         }
-        if(menuOption.toUpperCase().equals("LIST BOOKS")) {
-            System.out.println("\nBooks on the library:");
-            System.out.println(getAllLibraryBooks(books) + "\n");
-            return getAllLibraryBooks(books);
-        }
-        if(menuOption.toUpperCase().equals("CHECKOUT BOOK")) {
-            checkoutBook(books);
-            return getAllLibraryBooks(books);
-        }
-        if(menuOption.toUpperCase().equals("RETURN BOOK")) {
-            returnBook(books);
-            return getAllLibraryBooks(books);
-        }
-        if(menuOption.toUpperCase().equals("QUIT")) {
-            flag_quit = true;
-            System.out.println("Bye User");
-            return "Exit!";
-        }
+        
         return "The option is valid!";
     }
 
@@ -118,7 +119,7 @@ public class BibliotecaApp {
         } catch (Exception e) {
             showCheckoutMessage(books,index);
         }
-        return getAllLibraryBooks(books);
+        return getAllLibraryBook(books);
 
     }
 
@@ -150,7 +151,7 @@ public class BibliotecaApp {
             showReturnMessage(books,index);
 
         }
-        return getAllLibraryBooks(books);
+        return getAllLibraryBook(books);
 
     }
 

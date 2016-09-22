@@ -32,32 +32,41 @@ public class Tests {
     @Test
     public void shouldAlertCustomerWhenTheBookListIsEmpty(){
         List<Book> noBooks = new ArrayList<Book>();
-        assertEquals("There are no books!", biblio.getAllLibraryBooks(noBooks));
+        assertEquals("There are no books!", biblio.getAllLibraryBook(noBooks));
     }
 
     @Test
     public void shouldAlertCustomerWhenTheBookListIsNull(){
         List<Book> noBooks = null;
-        assertEquals("There are no books!", biblio.getAllLibraryBooks(noBooks));
+        assertEquals("There are no books!", biblio.getAllLibraryBook(noBooks));
     }
 
     @Test
-    public void shouldShowBookDetails(){
-        Book oneBook = new Book("Harry Potter","Rowling",2000);
-        assertEquals("Harry Potter, Rowling, 2000", biblio.getBooksDetails(oneBook));
+    public void shouldShowDetailsOfOneBook(){
+        assertEquals("Harry Potter, Rowling, 2000", biblio.getBooksDetails(books.get(0)));
 
     }
 
     @Test
-    public void shouldShowDetailsOfLibraryBooks(){
+    public void shouldShowDetailsOfAllLibraryBook(){
         assertEquals("Harry Potter, Rowling, 2000\n" +
-                "O alquimista, Paulo Coelho, 1988", biblio.getAllLibraryBooks(books));
+                "O alquimista, Paulo Coelho, 1988", biblio.getAllLibraryBook(books));
 
     }
 
     @Test
-    public void shouldShowMenuOptionListBooks(){
-        assertEquals("List Books", biblio.getMenuOptions());
+    public void shouldShowValidateMenuOptions(){
+        Menu menu = new Menu();
+        assertEquals("List Books", menu.getMenuOptions().get(0));
+        assertEquals("Checkout Book", menu.getMenuOptions().get(1));
+        assertEquals("Return Book", menu.getMenuOptions().get(2));
+        assertEquals("Quit", menu.getMenuOptions().get(3));
+    }
+
+    @Test
+    public void shouldShowMessageWhenMenuOptionIsInvalid(){
+        String menuOption = "List Authors";
+        assertEquals("Select a valid option!", biblio.getMenuOptions(menuOption, null));
     }
 
     @Test
@@ -68,13 +77,7 @@ public class Tests {
 
 
     @Test
-    public void shouldShowMenuInvalidOption(){
-        String menuOption = "List Authors";
-        assertEquals("Select a valid option!", biblio.getMenuOptions(menuOption, null));
-    }
-
-    @Test
-    public void shouldQuitWhenMenuOptionQuit(){
+    public void shouldQuitExecutionWhenMenuOptionQuitIsSelected(){
         String menuOption = "Quit";
         assertEquals("Exit!", biblio.getMenuOptions(menuOption, null));
     }
@@ -83,7 +86,7 @@ public class Tests {
     @Test
     public void shouldCheckoutBookByNameAndVerifyItIsNotListed(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
-        assertEquals("O alquimista, Paulo Coelho, 1988",biblio.getAllLibraryBooks(books));
+        assertEquals("O alquimista, Paulo Coelho, 1988",biblio.getAllLibraryBook(books));
     }
 
     @Test
