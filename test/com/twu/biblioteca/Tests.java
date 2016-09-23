@@ -1,8 +1,12 @@
 package com.twu.biblioteca;
 
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,30 +19,40 @@ public class Tests {
 
     BibliotecaApp biblio;
     List<Book> books;
+    ByteArrayOutputStream answer = new ByteArrayOutputStream();
 
     @Before
     public void setUp(){
+        System.setOut(new PrintStream(answer));
         biblio = new BibliotecaApp();
         books = new ArrayList<Book>();
         books.add(new Book("Harry Potter","Rowling",2000));
         books.add(new Book("O alquimista","Paulo Coelho",1988));
     }
 
+    @After
+    public void tearDown() {
+        System.setOut(null);
+    }
+
     @Test
     public void shouldWelcomeCustomer(){
-        assertEquals("WELCOME!!!", biblio.getWelcomeMessage());
+        biblio.getWelcomeMessage();
+        assertEquals("WELCOME!!!\n", answer.toString());
     }
 
     @Test
     public void shouldAlertCustomerWhenTheBookListIsEmpty(){
         List<Book> noBooks = new ArrayList<Book>();
-        assertEquals("There are no books!", biblio.getAllLibraryBook(noBooks));
+        biblio.getAllLibraryBook(noBooks);
+        assertEquals("There are no books!", answer.toString());
     }
 
     @Test
     public void shouldAlertCustomerWhenTheBookListIsNull(){
         List<Book> noBooks = null;
-        assertEquals("There are no books!", biblio.getAllLibraryBook(noBooks));
+        biblio.getAllLibraryBook(noBooks);
+        assertEquals("There are no books!", answer.toString());
     }
 
     @Test
@@ -49,8 +63,9 @@ public class Tests {
 
     @Test
     public void shouldShowDetailsOfAllLibraryBook(){
+        biblio.getAllLibraryBook(books);
         assertEquals("Harry Potter, Rowling, 2000\n" +
-                "O alquimista, Paulo Coelho, 1988", biblio.getAllLibraryBook(books));
+                "O alquimista, Paulo Coelho, 1988", answer.toString());
 
     }
 
@@ -64,77 +79,103 @@ public class Tests {
     }
 
     @Test
-    public void shouldShowMessageWhenMenuOptionIsInvalid(){
+    public void shouldShowWarningMessageWhenMenuOptionIsInvalid(){
         String menuOption = "List Authors";
-        assertEquals("Select a valid option!", biblio.getMenuOptions(menuOption, null));
+        biblio.getMenuOptions(menuOption, null);
+        assertEquals("Select a valid option!\n\n",answer.toString());
     }
 
     @Test
-    public void shouldShowAllBooksWhenMenuOptionListBooks() {
-        assertEquals("Harry Potter, Rowling, 2000\n" +
-                "O alquimista, Paulo Coelho, 1988", biblio.getMenuOptions("List Books",books));
+    public void shouldShowAllBooksWhenMenuOptionListBooksIsSelected() {
+        biblio.getMenuOptions("List Books",books);
+        assertEquals("\nHarry Potter, Rowling, 2000\n" +
+                "O alquimista, Paulo Coelho, 1988\n\n", answer.toString());
     }
-
 
     @Test
     public void shouldQuitExecutionWhenMenuOptionQuitIsSelected(){
         String menuOption = "Quit";
-        assertEquals("Exit!", biblio.getMenuOptions(menuOption, null));
+        biblio.getMenuOptions(menuOption, null);
+        assertEquals("Bye User!\n", answer.toString());
     }
 
-
     @Test
-    public void shouldCheckoutBookByNameAndVerifyItIsNotListed(){
+    public void shouldCheckoutBookAndVerifyItIsNotListed(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
-        assertEquals("O alquimista, Paulo Coelho, 1988",biblio.getAllLibraryBook(books));
+        answer.reset();
+        biblio.getAllLibraryBook(books);
+        assertEquals("O alquimista, Paulo Coelho, 1988",answer.toString());
     }
 
     @Test
-    public void shouldCheckoutBookAndVerifyParameterCheckoutFromBook(){
+    public void shouldCheckoutBookAndVerifyParameterCheckoutForBook(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         assertTrue(books.get(0).isCheckout());
     }
 
     @Test
     public void shouldVerifySuccessfulCheckout(){
-        biblio.setCheckoutBookByName(books,"Harry Potter");
-        assertEquals("Thank you! Enjoy the book", biblio.showCheckoutMessage(books,0));
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        assertEquals("Thank you! Enjoy the book.\n\n", answer.toString());
     }
 
     @Test
-    public void shouldVerifyUnsuccessfulCheckout(){
+    public void shouldShowUnsuccessfulMessageWhenTheBooksTitleIsWrong(){
         biblio.setCheckoutBookByName(books,"HHHarry PPPotter :)");
-        assertEquals("That book is not available.", biblio.showCheckoutMessage(books,0));
+        assertEquals("That book is not available.\n\n", answer.toString());
     }
 
     @Test
-    public void shouldReturnBookAndVerifyParameterCheckoutFromBook(){
+    public void shouldShowUnsuccessfulMessageWhenBookIsAlreadyCheckedout(){
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        answer.reset();
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        assertEquals("That book is not available.\n\n", answer.toString());
+    }
+
+    @Test
+    public void shouldReturnBookAndVerifyParameterCheckoutForBook(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         biblio.returnBookByName(books,books.get(0).getTitle());
         assertFalse(books.get(0).isCheckout());
     }
 
     @Test
-    public void shouldReturnBookAndAddBookToListBook() {
+    public void shouldShowReturnedBookOnTheListBook() {
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         biblio.returnBookByName(books,books.get(0).getTitle());
-        assertEquals("Harry Potter, Rowling, 2000\n" +
-                "O alquimista, Paulo Coelho, 1988", biblio.getMenuOptions("List Books",books));
+        answer.reset();
+        biblio.getMenuOptions("List Books",books);
+        assertEquals("\nHarry Potter, Rowling, 2000\n" +
+                "O alquimista, Paulo Coelho, 1988\n\n", answer.toString());
     }
+
 
     @Test
     public void shouldVerifySuccessfulReturn(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        answer.reset();
         biblio.returnBookByName(books,books.get(0).getTitle());
-        assertEquals("Thank you for returning the book.", biblio.showReturnMessage(books,0));
-
+        System.out.println("Thank you for returning the book.\n");
     }
 
     @Test
     public void shouldVerifyUnsuccessfulReturn(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
-        biblio.returnBookByName(books,"Harry Potter :)");
-        assertEquals("That is not a valid book to return.", biblio.showReturnMessage(books,0));
+        biblio.returnBookByName(books,books.get(0).getTitle());
+        answer.reset();
+        biblio.returnBookByName(books,books.get(0).getTitle());
+        assertEquals("That is not a valid book to return.\n\n", answer.toString());
+
     }
+
+    @Test
+    public void shouldVerifyUnsuccessfulReturn2(){
+        biblio.setCheckoutBookByName(books,books.get(0).getTitle());
+        answer.reset();
+        biblio.returnBookByName(books,"Harry Potter :)");
+        assertEquals("That is not a valid book to return.\n\n", answer.toString());
+    }
+
 
 }

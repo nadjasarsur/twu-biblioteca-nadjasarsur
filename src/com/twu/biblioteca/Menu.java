@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class Menu {
     private List<String> menuOptions = new ArrayList<String>();
-    ;
+
 
     public Menu() {
 
@@ -31,7 +31,4 @@ public class Menu {
         return menuOptions;
     }
 
-    public void setMenuOptions(List<String> menuOptions) {
-        this.menuOptions = menuOptions;
-    }
 }

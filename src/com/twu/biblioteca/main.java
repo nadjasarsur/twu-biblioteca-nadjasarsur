@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/*
  * Created by nsarsur on 9/21/16.
  */
 import java.io.*;
@@ -19,6 +19,9 @@ public class main {
         bookList.add(new Book("TDD by example","Marcel Pepescu",2011));
 
         BibliotecaApp biblio = new BibliotecaApp();
+
+        biblio.getWelcomeMessage();
+        System.out.println();
 
         InputStreamReader r = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(r);
