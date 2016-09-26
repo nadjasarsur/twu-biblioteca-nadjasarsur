@@ -27,13 +27,13 @@ public class BibliotecaApp {
     }
 
 
-    public void getAllLibraryBook(List<Book> books) {
+    public <T extends ItemBiblioteca> void getAllLibraryItems(List<T> items) {
         StringBuilder builder = new StringBuilder();
-        if(!(books == null) && !books.isEmpty()) {
-            for (int i = 0; i < books.size(); i++) {
-                if (!books.get(i).isCheckout()) {
-                    builder.append(getBooksDetails(books.get(i)));
-                    if (i < books.size() - 1) {
+        if(!(items == null) && !items.isEmpty()) {
+            for (int i = 0; i < items.size(); i++) {
+                if (!items.get(i).isCheckout()) {
+                    builder.append((items.get(i).details()));
+                    if (i < items.size() - 1) {
                         builder.append("\n");
                     }
                 }
@@ -41,11 +41,7 @@ public class BibliotecaApp {
             System.out.print(builder.toString());
             return;
         }
-        System.out.print("There are no books!");
-    }
-
-    public String getBooksDetails(Book book) {
-        return (book.getTitle()+", "+book.getAuthor()+", "+Integer.toString((book.getYear())));
+        System.out.print("There are no items!");
     }
 
     public int validateMenuOptions(String menuOption) {
@@ -57,9 +53,9 @@ public class BibliotecaApp {
         return -1;
     }
 
-    private int findBookOnLibraryByName(List<Book> books, String title) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().toUpperCase().equals(title.toUpperCase())) {
+    private <T extends ItemBiblioteca> int findBookOnLibraryByName(List<T> items, String title) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getTitle().toUpperCase().equals(title.toUpperCase())) {
                 return i;
             }
         }
@@ -70,7 +66,7 @@ public class BibliotecaApp {
         InputStreamReader r = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(r);
         String entry = null;
-        System.out.print("Book title: ");
+        System.out.print("Title: ");
         try {
             entry = br.readLine();
         } catch (IOException e) {
@@ -79,7 +75,7 @@ public class BibliotecaApp {
         return entry;
     }
 
-    public void getMenuOptions(String menuOption, List<Book> books) {
+    public <T extends ItemBiblioteca> void getMenuOptions(String menuOption, List<T> items) {
         int option = validateMenuOptions(menuOption);
         switch (option){
             case -1:    //Invalid option
@@ -87,14 +83,14 @@ public class BibliotecaApp {
                         break;
             case 0:     //List Books
                         System.out.println();
-                        getAllLibraryBook(books);
+                        getAllLibraryItems(items);
                         System.out.print("\n\n");
                         break;
             case 1:     //Checkout Book
-                        checkoutBook(books);
+                        checkoutBook(items);
                         break;
             case 2:     //Return Book
-                        returnBook(books);
+                        returnBook(items);
                         break;
             case 3:     //Quit
                         flag_quit = true;
@@ -104,38 +100,38 @@ public class BibliotecaApp {
         }
     }
 
-    private void checkoutBook(List<Book> books) {
+    private <T extends ItemBiblioteca> void checkoutBook(List<T> items) {
         String title = readFromKeyboard();
-        setCheckoutBookByName(books,title);
+        setCheckoutBookByName(items,title);
     }
 
-    public void setCheckoutBookByName(List<Book> books, String title) {
-        int index = findBookOnLibraryByName(books, title);
+    public <T extends ItemBiblioteca> void setCheckoutBookByName(List<T> items, String title) {
+        int index = findBookOnLibraryByName(items, title);
 
-        if(index >=0 && !books.get(index).isCheckout()) {
-            books.get(index).setCheckout(true);
-            System.out.println("Thank you! Enjoy the book.\n");
+        if(index >=0 && !items.get(index).isCheckout()) {
+            items.get(index).setCheckout(true);
+            System.out.println("Thank you! Enjoy the item.\n");
         }
         else {
             System.out.println("That book is not available.\n");
         }
     }
 
-    private void returnBook(List<Book> books) {
+    private <T extends ItemBiblioteca> void returnBook(List<T> books) {
         String title = readFromKeyboard();
         returnBookByName(books,title);
     }
 
 
-    public void returnBookByName(List<Book> books, String title) {
-        int index = findBookOnLibraryByName(books, title);
+    public <T extends ItemBiblioteca> void returnBookByName(List<T> items, String title) {
+        int index = findBookOnLibraryByName(items, title);
 
-        if(index >=0 && books.get(index).isCheckout()) {
-            books.get(index).setCheckout(false);
-            System.out.println("Thank you for returning the book.\n");
+        if(index >=0 && items.get(index).isCheckout()) {
+            items.get(index).setCheckout(false);
+            System.out.println("Thank you for returning the item.\n");
         }
         else {
-            System.out.println("That is not a valid book to return.\n");
+            System.out.println("That is not a valid item to return.\n");
         }
 
     }

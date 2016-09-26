@@ -44,26 +44,20 @@ public class BookTests {
     @Test
     public void shouldAlertCustomerWhenTheBookListIsEmpty(){
         List<Book> noBooks = new ArrayList<Book>();
-        biblio.getAllLibraryBook(noBooks);
-        assertEquals("There are no books!", answer.toString());
+        biblio.getAllLibraryItems(noBooks);
+        assertEquals("There are no items!", answer.toString());
     }
 
     @Test
     public void shouldAlertCustomerWhenTheBookListIsNull(){
         List<Book> noBooks = null;
-        biblio.getAllLibraryBook(noBooks);
-        assertEquals("There are no books!", answer.toString());
-    }
-
-    @Test
-    public void shouldShowDetailsOfOneBook(){
-        assertEquals("Harry Potter, Rowling, 2000", biblio.getBooksDetails(books.get(0)));
-
+        biblio.getAllLibraryItems(noBooks);
+        assertEquals("There are no items!", answer.toString());
     }
 
     @Test
     public void shouldShowDetailsOfAllLibraryBook(){
-        biblio.getAllLibraryBook(books);
+        biblio.getAllLibraryItems(books);
         assertEquals("Harry Potter, Rowling, 2000\n" +
                 "O alquimista, Paulo Coelho, 1988", answer.toString());
 
@@ -103,7 +97,7 @@ public class BookTests {
     public void shouldCheckoutBookAndVerifyItIsNotListed(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         answer.reset();
-        biblio.getAllLibraryBook(books);
+        biblio.getAllLibraryItems(books);
         assertEquals("O alquimista, Paulo Coelho, 1988",answer.toString());
     }
 
@@ -116,7 +110,7 @@ public class BookTests {
     @Test
     public void shouldVerifySuccessfulCheckout(){
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
-        assertEquals("Thank you! Enjoy the book.\n\n", answer.toString());
+        assertEquals("Thank you! Enjoy the item.\n\n", answer.toString());
     }
 
     @Test
@@ -156,7 +150,7 @@ public class BookTests {
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         answer.reset();
         biblio.returnBookByName(books,books.get(0).getTitle());
-        System.out.println("Thank you for returning the book.\n");
+        System.out.println("Thank you for returning the item.\n");
     }
 
     @Test
@@ -165,7 +159,7 @@ public class BookTests {
         biblio.returnBookByName(books,books.get(0).getTitle());
         answer.reset();
         biblio.returnBookByName(books,books.get(0).getTitle());
-        assertEquals("That is not a valid book to return.\n\n", answer.toString());
+        assertEquals("That is not a valid item to return.\n\n", answer.toString());
 
     }
 
@@ -174,7 +168,7 @@ public class BookTests {
         biblio.setCheckoutBookByName(books,books.get(0).getTitle());
         answer.reset();
         biblio.returnBookByName(books,"Harry Potter :)");
-        assertEquals("That is not a valid book to return.\n\n", answer.toString());
+        assertEquals("That is not a valid item to return.\n\n", answer.toString());
     }
 
 

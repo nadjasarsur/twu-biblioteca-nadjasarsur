@@ -3,42 +3,27 @@ package com.twu.biblioteca;
 /**
  * Created by nsarsur on 9/21/16.
  */
-public class Book {
+public class Book extends ItemBiblioteca{
 
-    private String title;
     private String author;
-    private int year;
-    private boolean checkout;
 
     public Book(String title, String author, int year) {
 
-        this.title = title;
+        super(title,year);
         this.author = author;
-        this.year = year;
-        this.checkout = false;
-    }
-
-    public String getTitle() {
-        return title;
+        setCheckout(false);
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public int getYear() {
-        return year;
+    public void setAuthor(String author){
+        this.author = author;
     }
 
-    public boolean isCheckout() {
-        return checkout;
+    public String details() {
+        return (getTitle()+", "+getAuthor()+", "+Integer.toString((getYear())));
     }
 
-    public void setCheckout(boolean checkout) {
-        this.checkout = checkout;
-    }
-
-    public boolean getCheckout() {
-        return checkout;
-    }
 }
