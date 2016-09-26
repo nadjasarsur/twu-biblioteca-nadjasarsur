@@ -114,7 +114,6 @@ public class BibliotecaApp {
 
         if(index >=0 && !books.get(index).isCheckout()) {
             books.get(index).setCheckout(true);
-
             System.out.println("Thank you! Enjoy the book.\n");
         }
         else {
