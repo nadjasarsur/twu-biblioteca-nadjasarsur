@@ -19,7 +19,10 @@ public class MenuTests {
         assertEquals(0, menu.getMenuOptionIndex("LIST"));
         assertEquals(1, menu.getMenuOptionIndex("CHECKOUT"));
         assertEquals(2, menu.getMenuOptionIndex("RETURN"));
-        assertEquals(3, menu.getMenuOptionIndex("QUIT"));
+        assertEquals(3, menu.getMenuOptionIndex("USER INFORMATION"));
+        assertEquals(4, menu.getMenuOptionIndex("LOGOUT"));
+        assertEquals(5, menu.getMenuOptionIndex("QUIT"));
+        assertEquals(6, menu.getMenuOptionIndex("LOGIN"));
     }
 
     @Test
@@ -34,7 +37,10 @@ public class MenuTests {
         assertTrue(menu.validadeOption(1));
         assertTrue(menu.validadeOption(2));
         assertTrue(menu.validadeOption(3));
-        assertFalse(menu.validadeOption(4));
+        assertTrue(menu.validadeOption(4));
+        assertTrue(menu.validadeOption(5));
+        assertTrue(menu.validadeOption(6));
+        assertFalse(menu.validadeOption(7));
     }
 
     @Test
@@ -49,9 +55,11 @@ public class MenuTests {
         assertEquals("LIST", menu.getMenuOptionString(0));
         assertEquals("CHECKOUT", menu.getMenuOptionString(1));
         assertEquals("RETURN", menu.getMenuOptionString(2));
-        assertEquals("QUIT", menu.getMenuOptionString(3));
+        assertEquals("USER INFORMATION", menu.getMenuOptionString(3));
+        assertEquals("LOGOUT", menu.getMenuOptionString(4));
+        assertEquals("QUIT", menu.getMenuOptionString(5));
+        assertEquals("LOGIN", menu.getMenuOptionString(6));
     }
-
 
 }
 

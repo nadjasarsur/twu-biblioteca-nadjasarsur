@@ -17,6 +17,7 @@ public class BibliotecaAppTests {
     private BibliotecaApp biblio;
     private List<Book> books;
     private List<Movie> movies;
+    private List<Account> users;
     private ByteArrayOutputStream answer;
 
     @Before
@@ -32,6 +33,11 @@ public class BibliotecaAppTests {
         movies = new ArrayList<Movie>();
         movies.add(new Movie("Passengers",2016,"Morten Tyldum"));
         movies.add(new Movie("Titanic",1997,"James Cameron"));
+
+        users = new ArrayList<Account>();
+        users.add(new Account("1234-5678","CrazyPassword","Nadja Sarsur","nsarsur@thoughtworks.com","9999-9999"));
+        users.add(new Account("5555-2222","HelloWorld!"," Brad Pitty","bpitty@thoughtworks.com","9999-9999"));
+
     }
 
     @After
@@ -112,46 +118,46 @@ public class BibliotecaAppTests {
     //SUCCESSFUL BOOK CHECKOUT
     @Test
     public void shouldVerifySuccessfulCheckoutBookMessage(){
-        biblio.setCheckoutItemByName(books,books.get(0).getTitle());
-        assertEquals("Thank you! Enjoy the item.\n\n", answer.toString());
+        biblio.setCheckoutItemByName(books,books.get(0).getTitle(),users.get(0));
+        assertEquals("Thank you! Enjoy the item.\nBook checked out by Nadja Sarsur\n\n", answer.toString());
     }
 
     //SUCCESSFUL MOVIE CHECKOUT
     @Test
     public void shouldVerifySuccessfulCheckoutMovieMessage(){
-        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle());
-        assertEquals("Thank you! Enjoy the item.\n\n", answer.toString());
+        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle(),users.get(0));
+        assertEquals("Thank you! Enjoy the item.\nBook checked out by Nadja Sarsur\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL BOOK CHECKOUT
     @Test
     public void shouldShowUnsuccessfulMessageWhenTheBooksTitleIsWrong(){
-        biblio.setCheckoutItemByName(books,"HHHarry PPPotter :)");
+        biblio.setCheckoutItemByName(books,"HHHarry PPPotter :)",users.get(0));
         assertEquals("That item is not available.\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL MOVIE CHECKOUT
     @Test
     public void shouldShowUnsuccessfulMessageWhenTheMoviesTitleIsWrong(){
-        biblio.setCheckoutItemByName(movies,"TITAANIC :)");
+        biblio.setCheckoutItemByName(movies,"TITAANIC :)",users.get(0));
         assertEquals("That item is not available.\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL BOOK CHECKOUT
     @Test
     public void shouldShowUnsuccessfulMessageWhenBookIsAlreadyCheckedOut(){
-        biblio.setCheckoutItemByName(books,books.get(0).getTitle());
+        biblio.setCheckoutItemByName(books,books.get(0).getTitle(),users.get(0));
         answer.reset();
-        biblio.setCheckoutItemByName(books,books.get(0).getTitle());
+        biblio.setCheckoutItemByName(books,books.get(0).getTitle(),users.get(0));
         assertEquals("That item is not available.\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL MOVIE CHECKOUT
     @Test
     public void shouldShowUnsuccessfulMessageWhenMovieIsAlreadyCheckedOut(){
-        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle());
+        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle(),users.get(0));
         answer.reset();
-        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle());
+        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle(),users.get(0));
         assertEquals("That item is not available.\n\n", answer.toString());
     }
 
@@ -162,50 +168,50 @@ public class BibliotecaAppTests {
     //SUCCESSFUL BOOK RETURN
     @Test
     public void shouldVerifySuccessfulBookReturn(){
-        biblio.setCheckoutItemByName(books,books.get(0).getTitle());
+        biblio.setCheckoutItemByName(books,books.get(0).getTitle(),users.get(0));
         answer.reset();
-        biblio.returnItemByName(books,books.get(0).getTitle());
+        biblio.returnItemByName(books,books.get(0).getTitle(),users.get(0));
         System.out.println("Thank you for returning the item.\n");
     }
 
     //SUCCESSFUL MOVIE RETURN
     @Test
     public void shouldVerifySuccessfulMovieReturn(){
-        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle());
+        biblio.setCheckoutItemByName(movies,movies.get(0).getTitle(),users.get(0));
         answer.reset();
-        biblio.returnItemByName(movies,movies.get(0).getTitle());
+        biblio.returnItemByName(movies,movies.get(0).getTitle(),users.get(0));
         System.out.println("Thank you for returning the item.\n");
     }
 
     //UNSUCCESSFUL BOOK RETURN
     @Test
     public void shouldVerifyUnsuccessfulBookReturnWhenBookIsNotCheckedOut(){
-        biblio.returnItemByName(books,books.get(0).getTitle());
+        biblio.returnItemByName(books,books.get(0).getTitle(),users.get(0));
         assertEquals("That is not a valid item to return.\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL MOVIE RETURN
     @Test
     public void shouldVerifyUnsuccessfulMovieReturnWhenMovieIsNotCheckedOut(){
-        biblio.returnItemByName(movies,movies.get(0).getTitle());
+        biblio.returnItemByName(movies,movies.get(0).getTitle(),users.get(0));
         assertEquals("That is not a valid item to return.\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL BOOK RETURN
     @Test
     public void shouldVerifyUnsuccessfulBookReturnWhenBooksTitleIsWrong() {
-        biblio.setCheckoutItemByName(books, books.get(0).getTitle());
+        biblio.setCheckoutItemByName(books, books.get(0).getTitle(),users.get(0));
         answer.reset();
-        biblio.returnItemByName(books, "Harry Potter :)");
+        biblio.returnItemByName(books, "Harry Potter :)",users.get(0));
         assertEquals("That is not a valid item to return.\n\n", answer.toString());
     }
 
     //UNSUCCESSFUL BOOK RETURN
     @Test
     public void shouldVerifyUnsuccessfulMovieReturnWhenMoviesTitleIsWrong() {
-        biblio.setCheckoutItemByName(movies, movies.get(0).getTitle());
+        biblio.setCheckoutItemByName(movies, movies.get(0).getTitle(),users.get(0));
         answer.reset();
-        biblio.returnItemByName(movies,"TITAANIC :)");
+        biblio.returnItemByName(movies,"TITAANIC :)",users.get(0));
         assertEquals("That is not a valid item to return.\n\n", answer.toString());
     }
 

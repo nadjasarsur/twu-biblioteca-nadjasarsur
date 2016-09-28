@@ -22,8 +22,13 @@ public class main {
         movieList.add(new Movie("Titanic",1997,"James Cameron"));
         movieList.add(new Movie("Gladiador",2000,"Ridley Scott"));
 
+        List<Account> users = new ArrayList<Account>();
+        users.add(new Account("1234-5678","CrazyPassword","Nadja Sarsur","nsarsur@thoughtworks.com","9999-9999"));
+        users.add(new Account("5555-2222","HelloWorld!"," Brad Pitty","bpitty@thoughtworks.com","9999-9999"));
 
-        BibliotecaController controller = new BibliotecaController(bookList,movieList);
+        Login login = new Login(users);
+
+        BibliotecaController controller = new BibliotecaController(bookList,movieList,login);
         controller.controlBibliotecaApp();
 
     }

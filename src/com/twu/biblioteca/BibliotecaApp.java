@@ -48,31 +48,52 @@ public class BibliotecaApp {
         return -1;
     }
 
-    public <T extends ItemBiblioteca> void setCheckoutItemByName(List<T> items, String title) {
+    public <T extends ItemBiblioteca> boolean setCheckoutItemByName(List<T> items, String title, Account user) {
         int index = findItemOnLibraryByName(items, title);
 
         if(index >=0 && !items.get(index).isCheckout()) {
             items.get(index).setCheckout(true);
-            System.out.println("Thank you! Enjoy the item.\n");
+            items.get(index).setUser(user);
+            System.out.println("Thank you! Enjoy the item.");
+            System.out.println("Book checked out by " + items.get(index).getUser().getName()+"\n");
+            return true;
         }
         else {
             System.out.println("That item is not available.\n");
+            return false;
         }
     }
 
-    public <T extends ItemBiblioteca> void returnItemByName(List<T> items, String title) {
+    public <T extends ItemBiblioteca> boolean returnItemByName(List<T> items, String title, Account user) {
         int index = findItemOnLibraryByName(items, title);
 
         if(index >=0 && items.get(index).isCheckout()) {
-            items.get(index).setCheckout(false);
-            System.out.println("Thank you for returning the item.\n");
+            if(items.get(index).getUser().equals(user)) {
+                items.get(index).setCheckout(false);
+                System.out.println("Thank you for returning the item.\n");
+                return true;
+            }
+            else {
+                System.out.println("This item was checked out by " + items.get(index).getUser().getName()+"\n\n");
+                return false;
+            }
         }
         else {
             System.out.println("That is not a valid item to return.\n");
+            return false;
         }
     }
 
     public void setFlag_quit(boolean flag_quit) {
         this.flag_quit = flag_quit;
+    }
+
+    public <T extends ItemBiblioteca>  T getItemByName(List<T> items,String title) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getTitle().toUpperCase().equals(title.toUpperCase())) {
+                return items.get(i);
+            }
+        }
+        return null;
     }
 }

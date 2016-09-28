@@ -16,18 +16,27 @@ public class Menu {
         menuOptions.put(0,"LIST");
         menuOptions.put(1,"CHECKOUT");
         menuOptions.put(2,"RETURN");
-        menuOptions.put(3,"QUIT");
+        menuOptions.put(3,"USER INFORMATION");
+        menuOptions.put(4,"LOGOUT");
+        menuOptions.put(5,"QUIT");
+        menuOptions.put(6,"LOGIN");
 
         menuItems.put(0,"BOOK");
         menuItems.put(1,"MOVIE");
-
     }
 
-    public void show() {
+    public void show(boolean userIslogged) {
         System.out.println("**** MAIN MENU ****");
         System.out.println("\t(Options)");
-        for (int i=0; i<menuOptions.size(); i++) {
-            System.out.println(menuOptions.get(i));
+        if(userIslogged){
+            for (int i=0; i<menuOptions.size()-1; i++) {
+                System.out.println(menuOptions.get(i));
+            }
+        }
+        else {
+            System.out.println(menuOptions.get(0));
+            System.out.println(menuOptions.get(6));
+            System.out.println(menuOptions.get(5));
         }
         System.out.println("\t(Items)");
         for (int i=0; i<menuItems.size(); i++) {
