@@ -4,7 +4,6 @@
 package com.twu.biblioteca;
 
 import java.util.Hashtable;
-import java.util.List;
 
 /**
  * Created by nsarsur on 9/27/16.
@@ -40,10 +39,6 @@ public class Menu {
         return menuOptions.get(option);
     }
 
-    public String getMenuItemsString(int item) {
-        return menuItems.get(item);
-    }
-
     public boolean validadeOption(int option){
         if(menuOptions.containsKey(option)) {
             return true;
@@ -52,7 +47,7 @@ public class Menu {
     }
 
     public boolean validadeItem(int item){
-        if(menuOptions.containsKey(item)) {
+        if(menuItems.containsKey(item)) {
             return true;
         }
         else return false;
