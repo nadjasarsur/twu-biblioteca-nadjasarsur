@@ -18,18 +18,6 @@ public class Movie extends ItemBiblioteca {
         return director;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
     public String details() {
         return (getTitle()+", "+getDirector()+", "+Integer.toString(getYear())+", "+rating);
 

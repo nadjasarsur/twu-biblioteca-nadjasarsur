@@ -1,13 +1,11 @@
 package com.twu.biblioteca;
 
-import java.io.BufferedReader;
 import java.util.ArrayList;
 import java.util.List;
 
 /*
  * Created by nsarsur on 9/21/16.
  */
-import java.io.*;
 
 public class main {
 
@@ -18,23 +16,15 @@ public class main {
         bookList.add(new Book("O alquimista","Paulo Coelho",1988));
         bookList.add(new Book("TDD by example","Marcel Pepescu",2011));
 
-        BibliotecaApp biblio = new BibliotecaApp();
 
-        biblio.getWelcomeMessage();
-        System.out.println();
+        List<Movie> movieList = new ArrayList<Movie>();
+        movieList.add(new Movie("Passengers",2016,"Morten Tyldum"));
+        movieList.add(new Movie("Titanic",1997,"James Cameron"));
+        movieList.add(new Movie("Gladiador",2000,"Ridley Scott"));
 
-        InputStreamReader r = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(r);
-        String option;
 
-        while(!biblio.getFlag_quit()) try {
-            biblio.menu.show();
-            option = br.readLine();
-            biblio.getMenuOptions(option,bookList);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-        }
+        BibliotecaController controller = new BibliotecaController(bookList,movieList);
+        controller.controlBibliotecaApp();
 
     }
 }

@@ -18,10 +18,6 @@ public class Book extends ItemBiblioteca{
         return author;
     }
 
-    public void setAuthor(String author){
-        this.author = author;
-    }
-
     public String details() {
         return (getTitle()+", "+getAuthor()+", "+Integer.toString((getYear())));
     }
